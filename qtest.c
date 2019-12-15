@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "sqrlib.h"
+#include "src/sqrlib.h"
 
 #define MAX_SIZE 8
 // #define MAX_SIZE 0
