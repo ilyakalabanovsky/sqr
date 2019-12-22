@@ -120,13 +120,13 @@ typedef struct {
        
     @{ */
     /** Push an element to the stack.
-    \param[in] val Pointer to data pushed onto the stack.
+    \param[in] val Pointer address to data pushed onto the stack.
     \param[in] _buf Pointer to the stack.
     */
     void sqr_s_push(DATA_handle val, STACK_handle _buf);
     
     /** Pop an element from the stack.
-    \param[in] _buf Pointer to the stack.
+    \param[in] _buf Pointer address to the stack.
     \return The data pointer.
     */
     DATA_handle sqr_s_pop(STACK_handle _buf);
@@ -145,7 +145,7 @@ typedef struct {
     void sqr_q_push_back(DATA_handle val,  QUEUE_handle _buf, QUEUE_handle _head);
     
     /** Pop the element from the top of the queue
-    \param[in] _buf Pointer to the queue.
+    \param[in] _buf Pointer address to the queue.
     \return The data pointer.
     */
     DATA_handle sqr_q_pop_front(QUEUE_handle _buf);
@@ -158,12 +158,12 @@ typedef struct {
     
     /** Create a new ring buffer
     \param[in] buf_size Number of the buffer elements.
-    \return Pointer to the ring buffer.
+    \return Pointer address to the ring buffer.
     */
     RING_handle sqr_rdyn_create(const int buf_size);
 
     /** Destroy the ring buffer
-    \param[in] _buf Pointer to the rinng buffer.
+    \param[in] _buf The pointer address to the ring buffer. Returns NULL if the ring buffer was successfully destroyed.
     */
     void sqr_rdyn_destroy(RING_handle _buf);
 

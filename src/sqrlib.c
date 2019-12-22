@@ -101,21 +101,22 @@ RING_handle sqr_rdyn_create(const int buf_size) {
     Clears the ring buffer, delete all elements and frees memory. 
  */
 void sqr_rdyn_destroy(RING_handle _buf) {
-    RING_Buffer *buf = (RING_Buffer*) _buf;
+    RING_Buffer **buf = (RING_Buffer**) _buf;
     DATA_Buffer *data_buf;
     
-    while(buf -> head != NULL) {
-        data_buf = buf -> head;
-        if(buf -> head == buf -> tail) {
-            buf -> head = NULL;
-            buf -> tail = NULL;
+    while((*buf) -> head != NULL) {
+        data_buf = (*buf) -> head;
+        if((*buf) -> head == (*buf) -> tail) {
+            (*buf) -> head = NULL;
+            (*buf) -> tail = NULL;
         } else {
-            buf -> head = buf -> head -> next;
-            buf -> head -> prev = buf -> tail;
+            (*buf) -> head = (*buf) -> head -> next;
+            (*buf) -> head -> prev = (*buf) -> tail;
         }
         free(data_buf);
     }
-    free(buf);
+    free((*buf));
+    (*buf) = NULL;
 }
 
 /**
