@@ -62,13 +62,16 @@ void sqr_q_push_back(DATA_handle val,  QUEUE_handle _buf, QUEUE_handle _head) {
     QUEUE *new_buf = (QUEUE*) calloc(1, sizeof(QUEUE));
     new_buf -> data = val;
     new_buf -> next = NULL;
-    if((*buf) != NULL) {
+    if((*buf)) {
         (*buf) -> next = new_buf;
         (*buf) = new_buf;
     } else {
         (*buf) = new_buf;
         (*head) = (*buf);
     }
+	if(!(*head)) {
+		(*head) = (*buf);
+	}
 }
 
 /** 
